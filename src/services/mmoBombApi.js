@@ -37,3 +37,14 @@ export const fetchGiveaways = async () => {
         return [];
     }
 };
+
+export const fetchLatestMMOs = async () => {
+    try {
+        const res = await axiosInstance.get(`${API_BASE_URL}/games?sort-by=release-date`);
+        return res.data;
+        
+    } catch (error) {
+        console.error('Error Fetching Latest MMOs', error);
+        return [];
+    }
+}

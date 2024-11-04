@@ -7,7 +7,7 @@ function GiveawayList() {
   useEffect(() => {
     const loadGiveaways = async () => {
       const data = await fetchGiveaways();
-      setGiveaways(data);
+      setGiveaways(data.slice(0, 6));
     };
     loadGiveaways();
   }, []);
@@ -18,16 +18,21 @@ function GiveawayList() {
       {giveaways.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {giveaways.map((item) => (
-            <div key={item.id} className="bg-darkCard shadow-md rounded-lg overflow-hidden border border-borderDark flex flex-col">
+            <div
+              key={item.id}
+              className="bg-darkCard shadow-md rounded-lg overflow-hidden border border-borderDark flex flex-col transform transition duration-300 hover:scale-105 hover:shadow-lg"
+            >
               <img
                 src={item.thumbnail}
                 alt={item.title}
-                className="w-full h-48 object-cover opacity-80 hover:opacity-100 transition-opacity duration-200"
+                className="w-full h-48 object-cover opacity-80 hover:opacity-100 transition-opacity duration-300"
               />
               <div className="p-4 flex-1 flex flex-col">
                 <h3 className="text-xl font-semibold mb-2 text-secondaryText">{item.title}</h3>
                 <p className="text-gray-400 text-sm mb-2">Keys Left: {item.keys_left}</p>
-                <p className="text-gray-300 mb-4 flex-grow">To partecipate just click 'Claim Giveaway' and follow instructions on the MMOBomb Website!</p>
+                <p className="text-gray-300 mb-4 flex-grow">
+                  To participate, just click 'Claim Giveaway' and follow instructions on the MMOBomb website!
+                </p>
                 <a
                   href={item.giveaway_url}
                   target="_blank"
@@ -48,3 +53,4 @@ function GiveawayList() {
 }
 
 export default GiveawayList;
+

@@ -7,7 +7,7 @@ function NewsFeed() {
   useEffect(() => {
     const loadNews = async () => {
       const data = await fetchNews();
-      setNews(data);
+      setNews(data.slice(0, 6));
     };
     loadNews();
   }, []);
@@ -18,11 +18,14 @@ function NewsFeed() {
       {news.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {news.map((item) => (
-            <div key={item.id} className="bg-darkCard shadow-md rounded-lg overflow-hidden border border-borderDark flex flex-col">
+            <div
+              key={item.id}
+              className="bg-darkCard shadow-md rounded-lg overflow-hidden border border-borderDark flex flex-col transform transition duration-300 hover:scale-105 hover:shadow-lg"
+            >
               <img
                 src={item.thumbnail}
                 alt={item.title}
-                className="w-full h-48 object-cover opacity-80 hover:opacity-100 transition-opacity duration-200"
+                className="w-full h-48 object-cover opacity-80 hover:opacity-100 transition-opacity duration-300"
               />
               <div className="p-4 flex-1 flex flex-col">
                 <h3 className="text-xl font-semibold mb-2 text-secondaryText">{item.title}</h3>
