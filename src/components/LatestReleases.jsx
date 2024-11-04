@@ -23,7 +23,7 @@ const LatestReleases = () => {
               className="bg-darkCard shadow-md rounded-lg overflow-hidden border border-borderDark flex flex-col transform transition duration-300 hover:scale-105 hover:shadow-lg"
             >
               <img
-                src={game.main_image}
+                src={game.thumbnail}
                 alt={game.title}
                 className="w-full h-48 object-cover opacity-80 hover:opacity-100 transition-opacity duration-300"
               />
