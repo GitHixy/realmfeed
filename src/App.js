@@ -30,11 +30,11 @@ function App() {
         <section ref={newsRef}>
           <NewsFeed />
         </section>
-        <section ref={giveawaysRef}>
-          <GiveawayList />
-        </section>
         <section ref={latestReleasesRef}>
           <LatestReleases />
+        </section>
+        <section ref={giveawaysRef}>
+          <GiveawayList />
         </section>
       </main>
       <Footer />
